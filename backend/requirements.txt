@@ -1,0 +1,12 @@
+-c requirements-lock.txt
+fastapi
+uvicorn[standard]
+pandas
+scikit-learn==1.9.0
+imbalanced-learn
+numpy
+joblib
+python-multipart
+httpx
+python-dotenv
+pydantic

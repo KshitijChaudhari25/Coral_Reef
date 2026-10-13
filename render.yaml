@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: coral-reef-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt -c requirements-lock.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.3
+      - key: CORS_ORIGINS
+        sync: false
+      - key: SITE_URL
+        sync: false
