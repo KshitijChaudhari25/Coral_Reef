@@ -42,11 +42,12 @@
   FastAPI. Actual provider authentication and model access have not been tested.
 - Feedback: configure your own Supabase URL/public key, `feedback` table, grants,
   and insert-only row-level security. No feedback records were written.
-- GitHub: local initial commit is ready. Public repository creation and push await
-  GitHub CLI authentication. Intended repository: KshitijChaudhari25/Coral_Reef.
+- GitHub: published to https://github.com/KshitijChaudhari25/Coral_Reef
+  with public visibility and the `main` branch.
 - Hosting: Vercel Services configuration is prepared and passes configuration checks
   against the official schema. The production frontend build passes using `/api`.
-  Cloud deployment and deployed-flow verification are still pending.
+  Cloud deployment and deployed-flow verification are still pending. Vercel import
+  requires installation of its GitHub integration for this repository.
 
 ## Remaining observations
 
