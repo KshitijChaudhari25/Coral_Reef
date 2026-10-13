@@ -42,9 +42,11 @@
   FastAPI. Actual provider authentication and model access have not been tested.
 - Feedback: configure your own Supabase URL/public key, `feedback` table, grants,
   and insert-only row-level security. No feedback records were written.
-- GitHub: account/repository configuration, initial commit, and push remain.
-- Hosting: deploy the backend and frontend, set production environment variables,
-  and verify the deployed flows. No deployment was created.
+- GitHub: local initial commit is ready. Public repository creation and push await
+  GitHub CLI authentication. Intended repository: KshitijChaudhari25/Coral_Reef.
+- Hosting: Vercel Services configuration is prepared and passes configuration checks
+  against the official schema. The production frontend build passes using `/api`.
+  Cloud deployment and deployed-flow verification are still pending.
 
 ## Remaining observations
 
