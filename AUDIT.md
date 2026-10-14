@@ -5,7 +5,7 @@
 - Frontend production build passes with Vite 8.3.4 and Tailwind 4.3.3.
 - npm dependency audit: zero known vulnerabilities after updating the lockfile.
 - Python dependency consistency check passes.
-- 13 API regression tests pass, including real model inference, simulation,
+- 14 API regression tests pass, including real model inference, simulation,
   finite input validation, CORS, rate limiting, NOAA parsing, and mocked chat.
 - Browser prediction returns Low Risk with 60.97% confidence for default inputs;
   the ten-year Status Quo simulation renders.
@@ -44,10 +44,18 @@
   and insert-only row-level security. No feedback records were written.
 - GitHub: published to https://github.com/KshitijChaudhari25/Coral_Reef
   with public visibility and the `main` branch.
-- Hosting: Vercel Services configuration is prepared and passes configuration checks
-  against the official schema. The production frontend build passes using `/api`.
-  Cloud deployment and deployed-flow verification are still pending. Vercel import
-  requires installation of its GitHub integration for this repository.
+- Hosting: production is live at https://coral-reef-lake.vercel.app with automatic
+  deployments from GitHub `main`. Both Vite and FastAPI build successfully.
+- Production checks: `/api/health`, `/api/predict`, and `/api/simulate` return 200.
+  Browser prediction gives 60.97% Low Risk and the ten-year scenario chart renders.
+- Live NOAA feed currently returns 503 with historical fallback. A direct request
+  from the local machine also times out connecting to the upstream PacIOOS host.
+- Chat correctly returns a controlled 503 until an OpenRouter key is configured.
+  Feedback stays disabled until Supabase is configured.
+- Deployment fixes: flattened Python dependency pins because Vercel could not parse
+  the included constraints file; mounted `/api` explicitly in FastAPI and added
+  a regression test for deployed prediction routing.
+
 
 ## Remaining observations
 

@@ -2,6 +2,10 @@
 
 An interactive dashboard by **Kshitij Chaudhari** for exploring coral bleaching observations, live ocean conditions, machine-learning predictions, and climate scenarios.
 
+Live dashboard: https://coral-reef-lake.vercel.app
+
+Repository: https://github.com/KshitijChaudhari25/Coral_Reef
+
 ## Features
 
 - Historical charts and an interactive Leaflet reef map.
@@ -104,7 +108,7 @@ The model is approximately 92.3 MiB, close to GitHub's 100 MiB per-file limit. A
 
 ## Deployment
 
-This project uses [Vercel Services](https://vercel.com/docs/services), currently in beta, to deploy Vite and FastAPI together. `vercel.json` routes `/api/*` to the Python service and all other requests to the frontend. Preview deployments use their own API automatically.
+This project uses [Vercel Services](https://vercel.com/docs/services), currently in beta, to deploy Vite and FastAPI together. `vercel.json` routes `/api/*` to the Python service (FastAPI mounts that prefix explicitly) and all other requests to the frontend. Preview deployments use their own API automatically.
 
 1. In Vercel, choose **Add New → Project** and import `KshitijChaudhari25/Coral_Reef`.
 2. Use the repository root. Keep build overrides unset: the service configuration selects Vite, `npm ci`, `npm run build`, `dist`, and FastAPI `main:app`.
