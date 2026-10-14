@@ -73,7 +73,7 @@ class ApiTests(unittest.TestCase):
             self.assertEqual('access-control-allow-origin' in response.headers, allowed)
 
     def test_chat_missing_key(self):
-        with patch.dict(os.environ, {'OPENROUTER_API_KEY': ''}):
+        with patch.dict(os.environ, {'OPENROUTER_API_KEY': '', 'Coral_Reef_ChatBot': ''}):
             response = self.client.post('/chat', json={'messages': [{'role': 'user', 'content': 'What is DHW?'}]})
         self.assertEqual(response.status_code, 503)
 

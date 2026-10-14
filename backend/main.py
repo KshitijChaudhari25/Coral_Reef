@@ -239,7 +239,8 @@ CHAT_SYSTEM_PROMPT = (
 
 @app.post('/chat')
 async def chat(body: ChatInput, request: Request):
-    api_key = os.getenv('OPENROUTER_API_KEY', '').strip()
+    api_key = (os.getenv('OPENROUTER_API_KEY', '').strip()
+               or os.getenv('Coral_Reef_ChatBot', '').strip())
     if not api_key:
         raise HTTPException(status_code=503, detail='The Reef Assistant is not configured yet.')
     if body.messages[-1].role != 'user':
