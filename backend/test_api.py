@@ -29,6 +29,12 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.json()['features']), 13)
 
+    def test_deployed_api_prefix(self):
+        self.assertEqual(self.client.get('/api/health').status_code, 200)
+        response = self.client.post('/api/predict', json=BASELINE)
+        self.assertEqual(response.status_code, 200, response.text)
+        self.assertEqual(response.json(), self.client.post('/predict', json=BASELINE).json())
+
     def test_real_prediction_matches_frontend_contract(self):
         response = self.client.post('/predict', json=BASELINE)
         self.assertEqual(response.status_code, 200, response.text)

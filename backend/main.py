@@ -412,3 +412,11 @@ def simulate(body: SimulateInput):
     )
 
     return df.to_dict(orient="records")
+
+
+# Services preserve the public request path. Expose the same API under /api
+# for the deployed frontend and at / for existing local clients.
+api_app = app
+app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
+app.mount('/api', api_app)
+app.mount('/', api_app)
