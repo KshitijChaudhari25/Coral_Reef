@@ -16,6 +16,13 @@ import L from 'leaflet';
 const getBleachColor = b =>
   b == null ? '#94a3b8' : b > 10 ? '#e74c3c' : b > 0 ? '#f39c12' : '#2ecc71';
 
+const cartoKey = import.meta.env.VITE_CARTO_API_KEY?.trim();
+const tileUrl = cartoKey
+  ? `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png?key=${encodeURIComponent(cartoKey)}`
+  : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+const tileAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  + (cartoKey ? ' &copy; <a href="https://carto.com/attribution/">CARTO</a>' : '');
+
 // The 5 NOAA zones — coordinates must match ZONES in backend/main.py exactly
 const ZONE_COORDS = {
   'Great Barrier Reef': { lat: -18.0, lon: 147.0 },
@@ -157,8 +164,9 @@ export function ReefMap({
           <LocationBoundsController location={location} />
 
           <TileLayer
-            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-            attribution='&copy; <a href="https://carto.com">CARTO</a>'
+            url={tileUrl}
+            attribution={tileAttribution}
+            maxZoom={19}
           />
 
           {/* ── 1. Historical CSV point cloud ─────────────────────────── */}

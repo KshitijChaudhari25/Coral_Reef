@@ -257,7 +257,7 @@ async def chat(body: ChatInput, request: Request):
                     'X-Title': 'Coral Reef Dashboard',
                 },
                 json={
-                    'model': os.getenv('OPENROUTER_MODEL') or 'openrouter/auto',
+                    'model': os.getenv('OPENROUTER_MODEL') or 'openrouter/free',
                     'messages': [{'role': 'system', 'content': CHAT_SYSTEM_PROMPT}]
                         + [message.model_dump() for message in body.messages],
                     'max_tokens': 400,

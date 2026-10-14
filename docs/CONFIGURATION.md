@@ -8,6 +8,7 @@
 
 | Variable | Purpose |
 | --- | --- |
+| `VITE_CARTO_API_KEY` | Optional public CARTO key for the dark basemap. Without it, OpenStreetMap tiles work without a key. |
 | `VITE_API_URL` | Locally `http://localhost:8000`. Leave unset on Vercel to use same-origin `/api`. |
 | `VITE_SUPABASE_URL` | Optional: your Supabase project URL. |
 | `VITE_SUPABASE_ANON_KEY` | Optional: your project's publishable/anon key. Never a service-role key. |
@@ -17,7 +18,7 @@
 | Variable | Purpose |
 | --- | --- |
 | `OPENROUTER_API_KEY` | Optional private key enabling chat. Keep it on the backend only. |
-| `OPENROUTER_MODEL` | Model identifier; defaults to `openrouter/auto`. |
+| `OPENROUTER_MODEL` | Model identifier; defaults to `openrouter/free`. |
 | `SITE_URL` | Frontend URL used for provider attribution. |
 | `CORS_ORIGINS` | Comma-separated exact frontend origins allowed to read API responses. |
 
@@ -51,3 +52,9 @@ The API tests use the real model and mock OpenRouter responses; they do not spen
 - **Feedback unavailable:** configure your Supabase project, table, grants, and RLS.
 - **NOAA unavailable:** historical charts remain usable; live results depend on the upstream service.
 - **Port 5173 occupied:** stop the other development server; this project uses a fixed port to keep CORS settings consistent.
+
+## Free map and chatbot setup
+
+The default map uses [OpenStreetMap tiles](https://operations.osmfoundation.org/policies/tiles/) without an API key. For the CARTO dark basemap, request your own [free CARTO key](https://www.carto.com/basemaps/apikey/index.html) and set `VITE_CARTO_API_KEY`. CARTO and OpenStreetMap attribution are included on the map. Browser basemap keys are public; use provider domain restrictions where available.
+
+Create your own [OpenRouter key](https://openrouter.ai/settings/keys) and store it as `OPENROUTER_API_KEY` on Vercel (Sensitive, Production). The app defaults to [openrouter/free](https://openrouter.ai/docs/guides/routing/routers/free-router), which only routes to free models. Free availability and quotas vary. `openrouter/auto` can choose paid models, so use the free router for this setup. Redeploy after setting keys.

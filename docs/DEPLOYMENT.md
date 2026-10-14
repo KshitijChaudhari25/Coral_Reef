@@ -32,11 +32,12 @@ Open the Vercel project, then **Settings → Environment Variables**. Choose Pro
 
 | Variable | When to set it |
 | --- | --- |
+| `VITE_CARTO_API_KEY` | Optional public basemap key. Leave unset for OpenStreetMap tiles without a key. |
 | `VITE_API_URL` | Leave unset; production defaults to `/api`. Never use localhost here. |
 | `VITE_SUPABASE_URL` | Enable feedback with your Supabase project URL. |
 | `VITE_SUPABASE_ANON_KEY` | Public anon/publishable key; configure table grants and RLS first. |
 | `OPENROUTER_API_KEY` | Private/sensitive value enabling the assistant. Never use a `VITE_` prefix. |
-| `OPENROUTER_MODEL` | Optional model override; defaults to `openrouter/auto`. |
+| `OPENROUTER_MODEL` | Optional model override; defaults to `openrouter/free`. |
 | `SITE_URL` | Production frontend URL used for OpenRouter attribution. |
 | `CORS_ORIGINS` | Only needed for additional cross-origin frontends you intentionally allow. |
 

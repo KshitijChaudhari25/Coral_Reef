@@ -87,10 +87,11 @@ class ApiTests(unittest.TestCase):
             payload = json.loads(request.content)
             self.assertEqual(payload['messages'][0]['role'], 'system')
             self.assertEqual(payload['max_tokens'], 400)
+            self.assertEqual(payload['model'], 'openrouter/free')
             return httpx.Response(200, json={'choices': [{'message': {'content': 'DHW measures accumulated heat stress.'}}]})
 
         upstream = httpx.AsyncClient(transport=httpx.MockTransport(provider))
-        with patch.dict(os.environ, {'OPENROUTER_API_KEY': 'test-only-key'}), patch.object(main.httpx, 'AsyncClient', return_value=upstream):
+        with patch.dict(os.environ, {'OPENROUTER_API_KEY': 'test-only-key', 'OPENROUTER_MODEL': ''}), patch.object(main.httpx, 'AsyncClient', return_value=upstream):
             response = self.client.post('/chat', json={'messages': [{'role': 'user', 'content': 'What is DHW?'}]})
         self.assertEqual(response.status_code, 200)
         self.assertIn('heat stress', response.json()['content'])
