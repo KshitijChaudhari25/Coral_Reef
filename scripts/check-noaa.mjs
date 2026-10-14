@@ -1,4 +1,4 @@
-const BASE_URL = 'https://coastwatch.pfeg.noaa.gov/erddap/griddap/NOAA_DHW.csv';
+const BASE_URL = 'https://pae-paha.pacioos.hawaii.edu/erddap/griddap/dhw_5km.csv';
 
 const fetchWithRetry = async (url, signal, retries = 1) => {
   try {

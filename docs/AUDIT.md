@@ -77,6 +77,6 @@
 
 ## Run again
 
-See `Readme.md` for exact PowerShell install/start/check commands. Development
+See [README](../README.md) for exact PowerShell install/start/check commands. Development
 servers started during this audit listen only on localhost ports 5173 and 8000.
 Their process IDs and logs are in the ignored `.cache` directory.

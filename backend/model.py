@@ -20,6 +20,7 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 from imblearn.over_sampling import SMOTE
 import pickle
 import os
+from pathlib import Path
 
 # ─────────────────────────────────────────────
 # STEP 1 — LOAD DATA
@@ -303,7 +304,7 @@ if __name__ == "__main__":
     print("     FINAL VERSION — Random Forest + SMOTE")
     print("=" * 55)
 
-    DATA_PATH = 'data/final_coral_reef_data.csv'
+    DATA_PATH = Path(__file__).resolve().parents[1] / 'frontend/public/data/final_coral_reef_data.csv'
 
     # Fallback to test execution block using dynamic paths if file is local
     if os.path.exists(DATA_PATH):
@@ -315,6 +316,6 @@ if __name__ == "__main__":
         model                           = train_model(X_train_bal, y_train_bal)
         accuracy, y_pred                = evaluate_model(model, X_test_s, y_test)
         show_feature_importance(model, features)
-        save_model(model, scaler, features)
+        save_model(model, scaler, features, output_dir=str(Path(__file__).resolve().parent / 'model_files'))
     else:
         print(f"⚠️ Data file not found at {DATA_PATH}. Please ensure your dataset is placed in the data folder.")
